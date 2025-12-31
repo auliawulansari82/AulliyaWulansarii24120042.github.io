@@ -7,180 +7,179 @@
 <style>
 body{
     font-family: Arial, sans-serif;
-    background:#d9dee2;
+    background:#dce3e6;
     margin:0;
     padding:30px;
 }
 
-.header{
-    font-size:40px;
+/* JUDUL */
+h1{
+    font-size:42px;
+    font-weight:normal;
     color:#444;
     margin-bottom:20px;
 }
 
-.container{
+/* CONTAINER */
+.wrapper{
     display:flex;
-    gap:20px;
+    gap:25px;
 }
 
+/* BOX */
 .box{
-    background:#dfe8cc;
-    border:1px solid #666;
+    background:#e4edd2;
+    border:1px solid #888;
     padding:15px;
     width:50%;
+    position:relative;
 }
 
-.garis{
+/* LABEL */
+.label{
+    position:absolute;
+    top:-14px;
+    right:15px;
+    background:#9b7b7b;
+    color:white;
+    padding:4px 10px;
+    font-size:14px;
+}
+
+/* GARIS */
+.line{
     font-family:"Courier New", monospace;
     font-size:14px;
-    white-space:nowrap;
 }
 
-.judul{
+/* JUDUL BOX */
+.title{
     text-align:center;
     font-weight:bold;
     margin:8px 0;
 }
 
+/* TABLE */
 table{
     width:100%;
 }
 
 td{
-    padding:6px 4px;
+    padding:6px;
 }
 
-/* ⬇️ INI YANG DIPERBAIKI */
-input[type=text],
-input[type=number]{
-    width:100%;
-    background:#e7efda;
-    border:1px solid #666;
-    padding:5px;
-    box-sizing:border-box;
+/* INPUT */
+input{
+    background:#d9e3c3;
+    border:1px solid #555;
+    padding:4px;
 }
 
+.small{ width:120px; }
+.medium{ width:200px; }
+.large{ width:100%; }
+
+/* BUTTON */
 button{
-    padding:6px 16px;
-    background:#d0d0d0;
-    border:1px solid #666;
+    padding:6px 14px;
+    background:#ddd;
+    border:1px solid #555;
     cursor:pointer;
 }
 
 button:hover{
-    background:#bfbfbf;
+    background:#ccc;
 }
 
-.keterangan{
+/* CATATAN */
+.note{
     margin-top:10px;
     font-size:14px;
 }
 
-#hasil{
-    display:none;
+/* OUTPUT */
+.output-text{
+    line-height:1.9;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">LATIHAN</div>
+<h1>LATIHAN</h1>
 
-<div class="container">
+<div class="wrapper">
 
 <!-- INPUT -->
 <div class="box">
-    <div class="garis">============================================================</div>
-    <div class="judul">DATA NILAI MAHASISWA</div>
-    <div class="garis">============================================================</div>
+    <div class="label">Input</div>
+
+    <div class="line">===============================================================================</div>
+    <div class="title">DATA NILAI MAHASISWA</div>
+    <div class="line">===============================================================================</div>
 
     <table>
         <tr>
-            <td width="170">Masukan NIM</td><td>:</td>
-            <td><input type="text" id="nim"></td>
+            <td>Masukan NIM</td><td>:</td>
+            <td><input class="medium" type="text"></td>
         </tr>
         <tr>
             <td>Nama Mahasiswa</td><td>:</td>
-            <td><input type="text" id="nama"></td>
+            <td><input class="large" type="text"></td>
         </tr>
         <tr>
             <td>Nilai UTS</td><td>:</td>
-            <td><input type="number" id="uts"></td>
+            <td><input class="small" type="number"></td>
         </tr>
         <tr>
             <td>Nilai UAS</td><td>:</td>
-            <td><input type="number" id="uas"></td>
+            <td><input class="small" type="number"></td>
         </tr>
         <tr>
             <td>Nilai Tugas</td><td>:</td>
-            <td><input type="number" id="tugas"></td>
+            <td><input class="small" type="number"></td>
         </tr>
         <tr>
-            <td colspan="3" align="center">
-                <button onclick="proses()">Proses</button>
-                <button onclick="resetForm()">Batal</button>
+            <td colspan="3">
+                <button>Proses</button>
+                <button>Batal</button>
             </td>
         </tr>
     </table>
 
-    <div class="garis">============================================================</div>
+    <div class="line">===============================================================================</div>
 
-    <div class="keterangan">
+    <div class="note">
         UTS : 30% &nbsp; UAS : 40% &nbsp; TUGAS : 30% <br>
-        85–100 : A | 70–84 : B | 60–69 : C | 40–59 : D | &lt;40 : E
+        85 s/d 100 : A, 70 s/d 84 : B, 60 s/d 69 : C, 40 s/d 59 : D, E
     </div>
 </div>
 
 <!-- OUTPUT -->
 <div class="box">
-    <div class="garis">============================================================</div>
-    <div class="judul">DATA NILAI MAHASISWA</div>
-    <div class="garis">============================================================</div>
+    <div class="label">Output</div>
 
-    <div id="hasil">
-        <table>
-            <tr><td width="170">NIM</td><td>:</td><td id="o_nim"></td></tr>
-            <tr><td>Nama Mahasiswa</td><td>:</td><td id="o_nama"></td></tr>
-            <tr><td>Nilai UTS</td><td>:</td><td id="o_uts"></td></tr>
-            <tr><td>Nilai UAS</td><td>:</td><td id="o_uas"></td></tr>
-            <tr><td>Nilai Tugas</td><td>:</td><td id="o_tugas"></td></tr>
-            <tr><td><b>Index</b></td><td>:</td><td><b id="o_index"></b></td></tr>
-        </table>
+    <div class="line">===============================================================================</div>
+    <div class="title">DATA NILAI MAHASISWA</div>
+    <div class="line">===============================================================================</div>
+
+    <div class="output-text">
+        NIM : <br>
+        Nama Mahasiswa : <br>
+        Nilai UTS : <br>
+        Nilai UAS : <br>
+        Nilai Tugas : <br>
+        Index :
     </div>
 
-    <div class="garis">============================================================</div>
+    <div class="line">===============================================================================</div>
 </div>
 
 </div>
-
-<script>
-function proses(){
-    let nim = nim.value;
-    let nama = nama.value;
-    let uts = Number(uts.value);
-    let uas = Number(uas.value);
-    let tugas = Number(tugas.value);
-
-    let nilai = (0.3*uts) + (0.4*uas) + (0.3*tugas);
-    let index = nilai>=85?"A":nilai>=70?"B":nilai>=60?"C":nilai>=40?"D":"E";
-
-    o_nim.innerText = nim;
-    o_nama.innerText = nama;
-    o_uts.innerText = uts;
-    o_uas.innerText = uas;
-    o_tugas.innerText = tugas;
-    o_index.innerText = index;
-
-    hasil.style.display = "block";
-}
-
-function resetForm(){
-    location.reload();
-}
-</script>
 
 </body>
 </html>
+
 
 
 
