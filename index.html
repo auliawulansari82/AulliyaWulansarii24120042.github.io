@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Latihan Data Nilai Mahasiswa</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#d9dee2;
+    margin:0;
+    padding:30px;
+}
+
+.header{
+    font-size:40px;
+    color:#444;
+    margin-bottom:20px;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+}
+
+.box{
+    background:#dfe8cc;
+    border:1px solid #666;
+    padding:15px;
+    width:50%;
+}
+
+.garis{
+    font-family:"Courier New", monospace;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+.judul{
+    text-align:center;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+table{
+    width:100%;
+}
+
+td{
+    padding:6px 4px;
+}
+
+/* ⬇️ INI YANG DIPERBAIKI */
+input[type=text],
+input[type=number]{
+    width:100%;
+    background:#e7efda;
+    border:1px solid #666;
+    padding:5px;
+    box-sizing:border-box;
+}
+
+button{
+    padding:6px 16px;
+    background:#d0d0d0;
+    border:1px solid #666;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#bfbfbf;
+}
+
+.keterangan{
+    margin-top:10px;
+    font-size:14px;
+}
+
+#hasil{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">LATIHAN</div>
+
+<div class="container">
+
+<!-- INPUT -->
+<div class="box">
+    <div class="garis">============================================================</div>
+    <div class="judul">DATA NILAI MAHASISWA</div>
+    <div class="garis">============================================================</div>
+
+    <table>
+        <tr>
+            <td width="170">Masukan NIM</td><td>:</td>
+            <td><input type="text" id="nim"></td>
+        </tr>
+        <tr>
+            <td>Nama Mahasiswa</td><td>:</td>
+            <td><input type="text" id="nama"></td>
+        </tr>
+        <tr>
+            <td>Nilai UTS</td><td>:</td>
+            <td><input type="number" id="uts"></td>
+        </tr>
+        <tr>
+            <td>Nilai UAS</td><td>:</td>
+            <td><input type="number" id="uas"></td>
+        </tr>
+        <tr>
+            <td>Nilai Tugas</td><td>:</td>
+            <td><input type="number" id="tugas"></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <button onclick="proses()">Proses</button>
+                <button onclick="resetForm()">Batal</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="garis">============================================================</div>
+
+    <div class="keterangan">
+        UTS : 30% &nbsp; UAS : 40% &nbsp; TUGAS : 30% <br>
+        85–100 : A | 70–84 : B | 60–69 : C | 40–59 : D | &lt;40 : E
+    </div>
+</div>
+
+<!-- OUTPUT -->
+<div class="box">
+    <div class="garis">============================================================</div>
+    <div class="judul">DATA NILAI MAHASISWA</div>
+    <div class="garis">============================================================</div>
+
+    <div id="hasil">
+        <table>
+            <tr><td width="170">NIM</td><td>:</td><td id="o_nim"></td></tr>
+            <tr><td>Nama Mahasiswa</td><td>:</td><td id="o_nama"></td></tr>
+            <tr><td>Nilai UTS</td><td>:</td><td id="o_uts"></td></tr>
+            <tr><td>Nilai UAS</td><td>:</td><td id="o_uas"></td></tr>
+            <tr><td>Nilai Tugas</td><td>:</td><td id="o_tugas"></td></tr>
+            <tr><td><b>Index</b></td><td>:</td><td><b id="o_index"></b></td></tr>
+        </table>
+    </div>
+
+    <div class="garis">============================================================</div>
+</div>
+
+</div>
+
+<script>
+function proses(){
+    let nim = nim.value;
+    let nama = nama.value;
+    let uts = Number(uts.value);
+    let uas = Number(uas.value);
+    let tugas = Number(tugas.value);
+
+    let nilai = (0.3*uts) + (0.4*uas) + (0.3*tugas);
+    let index = nilai>=85?"A":nilai>=70?"B":nilai>=60?"C":nilai>=40?"D":"E";
+
+    o_nim.innerText = nim;
+    o_nama.innerText = nama;
+    o_uts.innerText = uts;
+    o_uas.innerText = uas;
+    o_tugas.innerText = tugas;
+    o_index.innerText = index;
+
+    hasil.style.display = "block";
+}
+
+function resetForm(){
+    location.reload();
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
